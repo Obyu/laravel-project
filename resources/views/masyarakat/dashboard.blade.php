@@ -110,8 +110,8 @@
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
     <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-    <img src="{{ asset('images/logo.jpg') }}" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px; object-fit: contain;">
-    <h1 class="sitename">PEMA</h1>
+    <img src="{{ asset('img/Logo-Kemendesa-Dianisa.com_.png') }}" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px; object-fit: contain;">
+    <h1 class="sitename">KEMENDESA</h1>
   </a>
 
       <nav id="navmenu" class="navmenu">
@@ -399,6 +399,8 @@
                                       class="img-fluid rounded mt-3 mb-4">
                               @endif
                               <p class="card-text">{{ $ngadu->isi_laporan }}</p>
+                              
+                              <p class="card-text">Tanggapan : {{ $ngadu->tanggapan->tanggapan ?? "okey"}}</p>
                           </div>
                       </div>
                       @endif
@@ -477,7 +479,7 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">PEMA</span>
+            <span class="sitename">KEMENDESA</span>
           </a>
           <div class="footer-contact pt-3">
             <p>50 bojong</p>
@@ -519,7 +521,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">PEMA</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">KEMENDESA</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->

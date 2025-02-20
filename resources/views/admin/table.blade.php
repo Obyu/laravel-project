@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - Mazer Admin Dashboard')
+@section('title', 'Data Laporan Masyarakat Desa - Mazer Admin Dashboard')
 
 @section('content')
     @include('layouts.sidebar') <!-- Pastikan sidebar dimasukkan dengan cara yang benar -->
@@ -54,70 +54,75 @@
                                         <td class="text-nowrap">{{$ngadu->nik}}</td>
                                         <td class="text-bold-500 text-nowrap">{{$ngadu->masyarakat->telp}}</td>
                                         <td class="text-nowrap">{{$ngadu->tgl_pengaduan}}</td>
-                                        <td class="text-nowrap text-center">{{$ngadu->status}} 
+                                        <td class="text-nowrap text-center">
+                                            {{$ngadu->status}} 
                                             @if($ngadu->status == "0")
                                             <form action="{{route('verif',$ngadu->id_pengaduan)}}" method="POST">
                                                 @csrf
-                                                <input type="text" value="proses" hidden>
-                                                <button type="submit" class="btn btn-primary" name="status" value="proses">Proses</button></form>
+                                                <button type="submit" class="btn btn-primary" name="status" value="proses">Proses</button>
+                                            </form>
                                             @elseif($ngadu->status == "proses")
-                                            <input type="text" value="selesai" hidden>
                                             <form action="{{route('verif',$ngadu->id_pengaduan)}}" method="POST">
-                                            @csrf
-                                                <button type="submit" class="btn btn-success" name="status" value="selesai">Selesai</button></form>
+                                                @csrf
+                                                <button type="submit" class="btn btn-success" name="status" value="selesai">Selesai</button>
+                                            </form>
                                             @elseif($ngadu->status == "selesai")
                                                 <button type="submit" class="btn btn-secondary" disabled>Selesai</button>
                                             @endif
                                         </td>
                                         <td class="text-nowrap text-center">
-                                            <a href="{{ route('detail.pengaduan', $ngadu->id_pengaduan) }}" data-bs-toggle="modal" data-bs-target="#modalCardModal" class="text-white">
-                                            <img src="{{asset('img/icons8-info.gif')}}">
+                                            <!-- Sesuaikan data-bs-target dengan ID unik -->
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalDetail{{$ngadu->id_pengaduan}}" class="text-white">
+                                                <img src="{{asset('img/icons8-info.gif')}}">
                                             </a>
                                         </td>
+                                        <td>
+                                        <td class="text-center">
+                                            <a href="{{ route('laporan.generate', $ngadu->id_pengaduan) }}" class="btn btn-success">Generate Laporan</a>
+                                        </td>
+                                        </td>
                                     </tr>
-                                    @endforeach
-                                </tbody>
-                                <div class="form-actions d-flex justify-content-end">
-                    <a href="{{route('laporan.generate')}}" class="btn btn-success" id="generate-laporan">Generate Laporan</a>
-                </div>
-                            </table>
-                            <div class="modal fade" id="modalCardModal" tabindex="-1" aria-labelledby="modalCardModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modalCardModalLabel">Detail Pengaduan</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="card">
-                                            <img src="{{ asset('storage/'.$ngadu->foto) }}" class="card-img-top" alt="Gambar Atas Card">
-                                                <div class="card-content">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Isi Pengaduan</h4>
-                                                        <p class="card-text">
-                                                            {{$ngadu->isi_laporan}}
-                                                        </p>
-                                                        <form action="{{route('tanggapan.store',$ngadu->id_pengaduan)}}" method="post" id="form-tanggapan">
-                                                            @csrf
-                                                            <div class="form-body">
-                                                                <div class="form-group">
-                                                                    <label for="feedback1" class="sr-only">Berikan Tanggapan</label>
-                                                                    <input type="text" id="feedback1" class="form-control" placeholder="Name"
-                                                                        name="tanggapan">
-                                                                </div>
+
+                                    <!-- Modal dengan ID unik -->
+                                    <div class="modal fade" id="modalDetail{{$ngadu->id_pengaduan}}" tabindex="-1" aria-labelledby="modalDetailLabel{{$ngadu->id_pengaduan}}" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalDetailLabel{{$ngadu->id_pengaduan}}">Detail Pengaduan</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="card">
+                                                        <img src="{{ asset('storage/'.$ngadu->foto) }}" class="card-img-top" alt="Gambar Pengaduan">
+                                                        <div class="card-content">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Isi Pengaduan</h4>
+                                                                <p class="card-text">{{$ngadu->isi_laporan}}</p>
+                                                                <form action="{{route('tanggapan.store',$ngadu->id_pengaduan)}}" method="post">
+                                                                    @csrf
+                                                                    <div class="form-body">
+                                                                        <div class="form-group">
+                                                                            <label for="feedback{{$ngadu->id_pengaduan}}" class="sr-only">Berikan Tanggapan</label>
+                                                                            <input type="text" id="feedback{{$ngadu->id_pengaduan}}" class="form-control" placeholder="Tanggapan" name="tanggapan">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-actions d-flex justify-content-end">
+                                                                        <button type="submit" class="btn btn-primary me-1">Submit</button>
+                                                                        <button type="reset" class="btn btn-light-primary">Cancel</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
-                                                            <div class="form-actions d-flex justify-content-end">
-                                                                <button type="submit" class="btn btn-primary me-1">Submit</button>
-                                                                <button type="reset" class="btn btn-light-primary">Cancel</button>
-                                                            </div>
-                                                        </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                    @endforeach
+                                </tbody>
+
+                               
+                            </table>
                         </div>
                     </div>
                 </div>

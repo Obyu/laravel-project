@@ -14,7 +14,7 @@
   <!-- Left Pane -->
   <div class="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
     <div class="max-w-md text-center">
-      <img src="{{asset('images/logo.jpg')}}" width="524.67004" height="531.39694" class="w-full">
+      <img src="{{asset('img/Logo-Kemendesa-Dianisa.com_.png')}}" width="524.67004" height="531.39694" class="w-full">
         <polygon points="117.67523 88.74385 113.67523 109.74385 133.61763 115.36589 131.1398 92.94604 117.67523 88.74385" fill="#a0616a" />
         <path d="M0,523.44458c0,.66003,.53003,1.19,1.19006,1.19H523.48004c.65997,0,1.19-.52997,1.19-1.19,0-.65997-.53003-1.19-1.19-1.19H1.19006c-.66003,0-1.19006,.53003-1.19006,1.19Z" fill="#3f3d56" />
         <g>
@@ -85,10 +85,10 @@
     </div>
   </div>
   <!-- Right Pane -->
-  <div class="w-full bg-blue-300 lg:w-1/2 flex items-center justify-center">
+  <div class="w-full bg-red-600 lg:w-1/2 flex items-center justify-center">
     <div class="max-w-md w-full p-6">
-      <h1 class="text-3xl font-semibold mb-6 text-white text-center">PEMA</h1>
-      <h1 class="text-sm font-semibold mb-6 text-white text-center">Laporan anda adalah duit bagi saya hahahaha</h1>
+      <h1 class="text-3xl font-semibold mb-6 text-white text-center">KEMENDESA</h1>
+      <h1 class="text-sm font-semibold mb-6 text-white text-center">Kementrian Desa</h1>
       <form action="{{route('register.masyarakat')}}" method="POST" class="space-y-4" enctype="multipart/form-data">
         @csrf
         <div>
@@ -115,11 +115,10 @@
         <input type="file" id="foto_profile" name="foto_profile" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" hidden>
         <label class="text-white cursor-pointer" for="foto_profile" >
         <img src="{{asset('img/icons8-add-image-50.png')}}" class="block text-sm font-medium text-white">
-        Tambahkan Foto Profile
     </label>
         </div>
         <div>
-          <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">R egistrasi</button>
+          <button type="submit" class="w-full bg-green-600 text-white p-2 rounded-md hover:bg-green-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Registrasi</button>
         </div>
       </form>
     </div>

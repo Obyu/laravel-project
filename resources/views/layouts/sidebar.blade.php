@@ -4,11 +4,11 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="logo d-flex align-items-center">
                         <a href="index.html">
-                            <img src="{{asset('images/logo.jpg')}}" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
+                            <img src="{{asset('img/Logo-Kemendesa-Dianisa.com_.png')}}" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
                         </a>
                         <div class="ms-3">
-                            <h4 class="m-0" style="line-height: 1;">PEMA</h4> <!-- Mengurangi line-height -->
-                            <small style="font-size: 0.5rem; display: block; margin-top: -4px;">Pelaporan Masyarakat</small>
+                            <h4 class="m-0" style="line-height: 1;">KEMENDESA</h4>
+                            <small style="font-size: 0.5rem; display: block; margin-top: -4px;">Pelaporan Masyarakat Desa</small>
                         </div>
                     </div>
                     <div class="toggler">

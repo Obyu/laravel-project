@@ -31,7 +31,6 @@ class LoginController extends Controller
                     'nama'=>$masyarakat->nama,
                     'username'=>$masyarakat->username,
                     'telp'=>$masyarakat->telp
-
                 ]);
             return redirect()->route('masyarakat.index');
         }

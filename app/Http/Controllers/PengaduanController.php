@@ -57,7 +57,7 @@ class PengaduanController extends Controller
             'status'=>'0',
         ]);
 
-        return redirect()->route('admin.table')->with('succes', 'anda berhasil membuat laporan');
+        return redirect()->back()->with('succes', 'anda berhasil membuat laporan');
     }
 
     /**

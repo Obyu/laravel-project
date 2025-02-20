@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\masyarakat;
 use App\Models\pengaduan;
 use App\Models\petugas;
+use App\Models\tanggapan;
 use Illuminate\Http\Request;
 
 class MasyarakatController extends Controller
@@ -15,8 +16,9 @@ class MasyarakatController extends Controller
     public function index()
     { $pengaduan = pengaduan::with('masyarakat')->orderBy('created_at', 'desc')->get();
         $gawai = petugas::all();
+        $tanggapan = pengaduan::with('tanggapan')->get();
 
-        return view('masyarakat.dashboard', compact('pengaduan','gawai'));
+        return view('masyarakat.dashboard', compact('pengaduan','gawai','tanggapan'));
     }
 
     public function ShowUpload(){

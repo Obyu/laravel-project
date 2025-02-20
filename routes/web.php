@@ -34,11 +34,12 @@ Route::middleware(['role:petugas'])->group(function () {
 
 });
 
+Route::get('/admin/table', [AdminController::class, 'table'])->name('admin.table');
+
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admin/table', [AdminController::class, 'table'])->name('admin.table');
     Route::get('/admin/petugas', [AdminController::class, 'datapetugas'])->name('admin.petugas');    
     Route::get('/admin/datauser', [AdminController::class, 'datauser'])->name('admin.data');
     Route::post('/admin/addpetugas', [RegisterController::class, 'registerPetugas'])->name('add.patugas');
-    Route::get('/laporan/generate', [AdminController::class, 'generatePDF'])->name('laporan.generate');
+    Route::get('/laporan/{id}/generate', [AdminController::class, 'generatePDF'])->name('laporan.generate');
 });

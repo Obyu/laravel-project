@@ -51,9 +51,15 @@ class AdminController extends Controller
         $masyarakat = petugas::all();
         return view('admin.datapetugas', compact('masyarakat'));
     }
-    public function generatePDF()
+    public function generatePDF($id)
     {
-        // Data untuk laporan
+        $pengaduan = Pengaduan::find($id);
+        $tanggapan = Tanggapan::where('id_pengaduan', $id)->get();
+        $imgPath = storage_path('app/public/' . $pengaduan->foto);
+        $imgData = base64_encode(file_get_contents($imgPath));
+        $imgSrc = 'data:image/' . pathinfo($imgPath, PATHINFO_EXTENSION) . ';base64,' . $imgData;
+    
+          
         $data = [
             'title' => 'Laporan Data Pegawai',
             'date' => date('d-m-Y'),
@@ -65,7 +71,7 @@ class AdminController extends Controller
         ];
 
         // Generate PDF
-        $pdf = Pdf::loadView('admin.generate', $data);
+        $pdf = Pdf::loadView('admin.generate', compact('imgSrc','data','pengaduan', 'tanggapan'));
 
         // Langsung unduh file PDF
         return $pdf->download('laporan.pdf');

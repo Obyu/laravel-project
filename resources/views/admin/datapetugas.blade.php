@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - Mazer Admin Dashboard')
+@section('title', 'Petugas - Pelaporan Masyarakat Desa')
 
 @section('content')
     @include('layouts.sidebar') <!-- Pastikan sidebar dimasukkan dengan cara yang benar -->
