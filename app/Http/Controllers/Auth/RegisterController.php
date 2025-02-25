@@ -36,6 +36,9 @@ class RegisterController extends Controller
     }
 
     public function registerPetugas(Request $request){
+        if (petugas::where('username', $request->username)->exists()) {
+            return redirect()->back()->with('error', 'petugas sudah ada');
+        }
         petugas::create([
             'nama_petugas'=>$request->nama_petugas,
             'username'=>$request->username,

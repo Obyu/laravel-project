@@ -32,7 +32,7 @@ class LoginController extends Controller
                     'username'=>$masyarakat->username,
                     'telp'=>$masyarakat->telp
                 ]);
-            return redirect()->route('masyarakat.index');
+            return redirect()->route('masyarakat.index')->with('success', 'anda berhasil login' . session::get('auth.username'));
         }
         $petugas = petugas::where('username',$request->username)->first();
         if($petugas && Hash::check( $request->password, $petugas->password )) {

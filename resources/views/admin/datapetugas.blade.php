@@ -16,8 +16,8 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Data User</h3>
-                <p class="text-subtitle text-muted">For user to check they list</p>
+                <h3>Data Petugas</h3>
+                <p class="text-subtitle text-muted">Berikut Adalah Data Petugas</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -38,6 +38,21 @@
                         Tambah Pegawai
                     </button>
                 </div>
+            </div>
+            <div class="card-head">
+
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
+
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
+
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="table1">
